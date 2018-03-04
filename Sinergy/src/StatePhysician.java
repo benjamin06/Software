@@ -1,6 +1,6 @@
 
 public enum StatePhysician {
 	Idle,
-	Visiting,
+	Busy,
 	Off_duty
 }

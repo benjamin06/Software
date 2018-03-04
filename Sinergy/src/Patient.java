@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Patient {
 	private static int lastID=0;
@@ -6,20 +7,21 @@ public class Patient {
 	public float insurance;
 	public StatePatient state;
 	public double cost;
-	public ArrayList<StatePatient,Time> history;
-	/* créer la probabilité pour la sévérité
-	 * créer le temps
-	 */
+	public ArrayList<CoupleStateTime> history;
+	public ProbabilityDistribution severity_probability;
+	public Severity severity;
 	
-	public Patient(float insurance, int cost) {
+	public Patient(float insurance,StatePatient state, int cost, ProbabilityDistribution severity_probability ) {
 		this.id=lastID +1;
 		this.lastID +=1;
 		this.insurance= insurance;
 		this.cost = cost;
-		this.history = new ArrayList();
+		this.severity_probability = severity_probability;
+		setSeverity();
+		this.history = new ArrayList<CoupleStateTime>();
 	} 
 	
-	public String getSeverity() {
+	public Severity getSeverity() {
 		return severity;
 	}
 	public double getCost() {
@@ -30,7 +32,26 @@ public class Patient {
 		this.cost = cost;
 		
 	}
-
+	public void setSeverity() {
+		Random rand = new Random();
+		int s = rand.nextInt(100);
+		if(s==0) {
+			this.severity = Severity.L1;
+		}
+		if(1<=s&&s<=5) {
+			this.severity = Severity.L2;
+		}
+		if(6<=s&&s<=25) {
+			this.severity = Severity.L3;
+		}
+		if(26<=s&&s<=60) {
+			this.severity = Severity.L4;
+		}
+		else {
+			this.severity = Severity.L5;
+		}
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -55,12 +76,12 @@ public class Patient {
 		this.state = state;
 	}
 
-	public ArrayList<StatePatient, Time> getHistory() {
+	public ArrayList<CoupleStateTime> getHistory() {
 		return history;
 	}
 
-	public void addHistory(ArrayList<StatePatient, Time> history) {
-		this.history = history;
+	public void addHistory(CoupleStateTime statetime) {
+		this.history.add(statetime);
 	}
 	
 	
