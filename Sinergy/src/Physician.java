@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 
-public class Physician {
-	private static int lastID=0;
-	private StatePhysician state;
+public class Physician extends Human_Ressources{
+	public ArrayList<Patient> Patient_already_tested;
+	public Physician(){
+		super();
+		this.patient_already_tested = new ArrayList();
+	}
 	
-	ArrayList patient_list= new ArrayList();
-	ArrayList patient_already_tested = new ArrayList();
-
-}
