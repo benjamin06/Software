@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 
 
@@ -13,8 +12,8 @@ public class HealthService {
 	public HealthService(String name, double cost,ProbabilityDistribution waiting_probability) {
 		this.name = name;
 		this.cost = cost;
-		this.Waiting_Queue = new HashSet();
-		this.Patient_Already_Tested = new HashSet();
+		this.Waiting_Queue = new HashSet<Patient>();
+		this.Patient_Already_Tested = new HashSet<Patient>();
 		this.waiting_probability = waiting_probability;
 		this.waiting = waiting_probability.generateSample();
 	}
