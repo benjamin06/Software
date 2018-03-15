@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Patient {
 	private static int lastID=0;
-	private int id;
+	protected int id;
 	public float insurance;
 	public StatePatient state;
 	public double cost;

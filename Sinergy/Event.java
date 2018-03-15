@@ -4,19 +4,16 @@ public class Event {
 	private ArrayList<String> statut;
 	public int time;
 	public Patient patient;
-	private ProbabilityDistribution probability;
 	protected int duration;
 	
-	public Event(Patient patient, ProbabilityDistribution probability, int time) {
+	public Event(Patient patient, int time) {
 		this.patient = patient;
-		this.probability = probability;
 		this.time = time;
 
 	}
 	public Event() {
 		this.patient = null;
 		this.time = 0;
-		this.probability = null;
 	}
 	
 	public Patient getPatient() {

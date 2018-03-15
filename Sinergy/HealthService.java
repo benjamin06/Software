@@ -2,28 +2,28 @@ import java.util.HashSet;
 
 
 public class HealthService {
-	public String name;
+	public Room room;
 	public double cost;
-	private HashSet<Patient> Waiting_Queue;
-	private HashSet<Patient> Patient_Already_Tested;
-	private double waiting;
-	private ProbabilityDistribution waiting_probability;
+	protected HashSet<Patient> Waiting_Queue;
+	protected HashSet<Patient> Patient_Already_Tested;
+	private double duration;
+	protected ProbabilityDistribution waiting_probability;
 	
-	public HealthService(String name, double cost,ProbabilityDistribution waiting_probability) {
-		this.name = name;
+	public HealthService(Room room, double cost,ProbabilityDistribution waiting_probability) {
+		this.room = room;
 		this.cost = cost;
 		this.Waiting_Queue = new HashSet<Patient>();
 		this.Patient_Already_Tested = new HashSet<Patient>();
 		this.waiting_probability = waiting_probability;
-		this.waiting = waiting_probability.generateSample();
+		this.duration = waiting_probability.generateSample();
 	}
 	
-	public String getName() {
-		return name;
+	public Room getRoom() {
+		return room;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 
 	public double getCost() {
@@ -50,12 +50,12 @@ public class HealthService {
 		Patient_Already_Tested = patient_Already_Tested;
 	}
 
-	public double getWaiting() {
-		return waiting;
+	public double getDuration() {
+		return duration;
 	}
 
-	public void setWaiting(double waiting) {
-		this.waiting = waiting;
+	public void setDuration(double duration) {
+		this.duration = duration;
 	}
 
 	public ProbabilityDistribution getWaiting_probability() {
