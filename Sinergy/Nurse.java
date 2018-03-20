@@ -6,3 +6,5 @@ public class Nurse extends Human_Ressources{
 		this.patient_registered = new ArrayList<Patient>();
 	}
 }
+
+
